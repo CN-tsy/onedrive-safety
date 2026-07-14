@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Onedrive Safety</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Set a password</h1>
+    <!-- From Uiverse.io by Satwinder04 --> 
+    <div class="input-container" id="pw">
+      <input placeholder="enter passworld" class="input-field" type="password">
+      <label for="input-field" class="input-label">passworld</label>
+      <span class="input-highlight"></span>
+    </div>
+    <div class="input-container" id="conf">
+      <input placeholder="confirm passworld" class="input-field" type="password">
+      <label for="input-field" class="input-label">passworld</label>
+      <span class="input-highlight"></span>
+    </div>
+    <p id="warning" style="display: none;"></p>
+    <button id="confpw">Confirm</button>
+    <script>
+      // filepath: /E:/mod/app/src/index.js
+
+      // 获取输入框和按钮
+      const passwordInput = document.querySelector('#pw .input-field');
+      const confirmPasswordInput = document.querySelector('#conf .input-field');
+      const confirmButton = document.querySelector('#confpw');
+      const warningMessage = document.getElementById('warning');
+
+      confirmButton.addEventListener('click', () => {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (password===''||confirmPassword===''){
+          warningMessage.textContent='Please fill in both password fields.';
+          warningMessage.style.display='block';
+          return;
+        }
+        if (password === confirmPassword) {
+          console.log('Passwords match!');
+          warningMessage.style.display='none';
+        } else {
+          console.log('Passwords do not match!');
+          warningMessage.style.display='block';
+          warningMessage.textContent='Passwords do not match';
+        }
+      });
+    </script>
+  </body>
+</html>
